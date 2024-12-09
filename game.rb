@@ -25,36 +25,71 @@ class Player
   def score
     @score = @health + @name.length
   end
-
 end
 
-p1 = Player.new("finn", 60)
-p2 = Player.new("lucy", 100)
-p3 = Player.new("jase")
-p4 = Player.new("alex", 125)
+class Game
+  attr_reader :title, :players
 
-players = [p1, p2, p3, p4]
-players.pop
-
-p5 = Player.new("cole", 75)
-players.append(p5)
-
-puts "\nBefore playing:"
-puts players
-
-players.each do |player|
-  number_rolled = rand(1..6)
-
-  case number_rolled
-  when 1..2 
-    puts "#{number_rolled}: #{player.name} got drained 😩"
-  when 3..4
-    puts "#{number_rolled}: #{player.name} got skipped"
-  else
-    puts "#{number_rolled}: #{player.name} got boosted 😁"
+  def initialize(title)
+    @title = title
+    @players = []
   end
-end
 
-puts "\nAfter playing:"
-puts players
+  def add_player(player)
+    @players << player
+  end
+
+  def roll_die
+    rand(1..6)
+  end
+
+  def play
+    puts "\nLet's play #{@title}!"
+    
+    puts "\nBefore playing:"
+    puts @players
+
+    @players.each do |player|
+      number_rolled = roll_die
+
+      case number_rolled
+      when 1..2 
+        player.drain
+        puts "Rolled #{number_rolled} - #{player.name} got drained 😩"
+      when 3..4
+        puts "Rolled #{number_rolled} - #{player.name} got skipped"
+      else
+        player.boost
+        puts "Rolled #{number_rolled} - #{player.name} got boosted 😁"
+      end
+    end
+
+    puts "\nAfter playing:"
+    puts @players
+  end
+
+end
+  
+player_1 = Player.new("finn", 60)
+player_2 = Player.new("lucy", 90)
+player_3 = Player.new("jase")
+player_4 = Player.new("alex", 125)
+
+game = Game.new("Winner Takes All")
+game.add_player(player_1)
+game.add_player(player_2)
+game.add_player(player_3)
+game.add_player(player_4)
+game.play
+
+puts "\n"
+puts "*" * 30
+
+jp = Player.new("jordan pickford", 50)
+vvd = Player.new("virgil van djyk", 70)
+
+game2 = Game.new("LFC beat Everton every time")
+game2.add_player(jp)
+game2.add_player(vvd)
+game2.play
 
