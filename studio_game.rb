@@ -11,15 +11,15 @@ game.add_player(player_1)
 game.add_player(player_2)
 game.add_player(player_3)
 game.add_player(player_4)
-game.play
+game.play(3)
 
-puts "\n"
-puts "*" * 30
+# puts "\n"
+# puts "*" * 30
 
-jp = Player.new("jordan pickford", 50)
-vvd = Player.new("virgil van djyk", 70)
+# jp = Player.new("jordan pickford", 50)
+# vvd = Player.new("virgil van djyk", 70)
 
-game2 = Game.new("LFC beat Everton every time")
-game2.add_player(jp)
-game2.add_player(vvd)
-game2.play
+# game2 = Game.new("LFC beat Everton every time")
+# game2.add_player(jp)
+# game2.add_player(vvd)
+# game2.play(3)
