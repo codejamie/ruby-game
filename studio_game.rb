@@ -15,11 +15,3 @@ game.play
 
 puts "\n"
 puts "*" * 30
-
-jp = Player.new("jordan pickford", 50)
-vvd = Player.new("virgil van djyk", 70)
-
-game2 = Game.new("LFC beat Everton every time")
-game2.add_player(jp)
-game2.add_player(vvd)
-game2.play

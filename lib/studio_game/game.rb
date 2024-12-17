@@ -1,4 +1,7 @@
+require_relative('treasure_trove')
+
 class Game
+ 
   attr_reader :title, :players
 
   def initialize(title)
@@ -17,6 +20,10 @@ class Game
   def play
     puts "\nLet's play #{@title}!"
     
+    TreasureTrove::TREASURES.each do |t|
+      puts "A #{t.name} is worth #{t.points} points"
+    end
+
     puts "\nBefore playing:"
     puts @players
 
@@ -33,6 +40,9 @@ class Game
         player.boost
         puts "Rolled #{number_rolled} - #{player.name} got boosted 😁"
       end
+
+      treasure = TreasureTrove.random_treasure
+      puts "#{player.name} found a #{treasure.name} - #{treasure.icon} - worth #{treasure.points} points!"
     end
 
     puts "\nAfter playing:"
