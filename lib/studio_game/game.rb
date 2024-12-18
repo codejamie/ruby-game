@@ -17,7 +17,7 @@ class Game
     rand(1..6)
   end
 
-  def play(rounds = 1)
+  def play(rounds = 3)
     puts "\n*** Treasures ***"
     TreasureTrove::TREASURES.each do |t|
       puts "A #{t.name} - #{t.icon} is worth #{t.points} points."
@@ -48,6 +48,9 @@ class Game
 
         treasure = TreasureTrove.random_treasure
         puts "#{player.name} found a #{treasure.name} - #{treasure.icon} - worth #{treasure.points} points!"
+
+        player.found_treasure(treasure.name, treasure.points)
+
       end
     end
 
