@@ -18,13 +18,19 @@ class Game
   end
 
   def play(rounds = 1)
+    puts "\n*** Treasures ***"
+    TreasureTrove::TREASURES.each do |t|
+      puts "A #{t.name} - #{t.icon} is worth #{t.points} points."
+    end 
+
     1.upto(rounds) do |r|
       puts "\nRound: #{r}"
-      
-      puts "\nLet's play #{@title}!"
-      
+
       puts "\nBefore playing:"
       puts @players
+
+      puts "\nLet's play #{@title}!"
+      puts "*".center(30)
 
       @players.each do |player|
         number_rolled = roll_die
@@ -39,6 +45,9 @@ class Game
           player.boost
           puts "Rolled #{number_rolled} - #{player.name} got boosted 😁"
         end
+
+        treasure = TreasureTrove.random_treasure
+        puts "#{player.name} found a #{treasure.name} - #{treasure.icon} - worth #{treasure.points} points!"
       end
     end
 

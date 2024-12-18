@@ -14,4 +14,4 @@ game.add_player(player_4)
 game.play
 
 puts "\n"
-puts "*" * 30
+puts "*".center(30)
